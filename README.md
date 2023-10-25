@@ -6,6 +6,11 @@ Project Backlog:
 2.Abzüge:
   Stuerklasse => Eingabe 1-6 ist anders Besteuert pro Klasse 
                 !Beachtung Beitragsbemessungsgrenzen
+                -Bundesland auswahl,
+                -Alters angabe
+                -Abzüge von der Steuer. Steruerfreibeträge 
+                -
+                
   Versicherung => Tabelle kommt noch von VRE, in Lohnsteuertabelle ist Brutto angabe
   Kirche ja/nein => Kirchensteuer 
 
