@@ -1,22 +1,13 @@
 public class User {
 
-    int bruttoLohn;
+    float bruttoLohn;
     int steuerKlasse;
-    int alter;
     boolean kirchenSteuer;
-    String versicherung;
-    String bundesland;
-    
 
-
-    //Konstruktor für neuen User/Steuerzahler
-    public User(int bruttoLohn, int steuerKlasse, int alter, boolean kirchenSteuer, String versicherung, String bundesland)
-    {
-        this.bruttoLohn = bruttoLohn;
+    // Konstruktor für neuen User/Steuerzahler
+    public User(float lohn, int steuerKlasse, boolean kirchenSteuer) {
+        this.bruttoLohn = lohn;
         this.steuerKlasse = steuerKlasse;
-        this.alter = alter;
         this.kirchenSteuer = kirchenSteuer;
-        this.versicherung = versicherung;
-        this.bundesland = bundesland;
     }
 }
