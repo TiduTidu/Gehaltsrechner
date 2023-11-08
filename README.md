@@ -19,4 +19,3 @@ Netto:xxxx
 Abzüge:
 Sozialabgaben:
 Steuern:
-..
