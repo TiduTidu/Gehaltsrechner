@@ -4,13 +4,13 @@ import java.util.Scanner;
 public class Lohnsteuer {
     public static void main(String[] args) throws IOException {
         Scanner reader = new Scanner(System.in);
-        System.out.println("Lohnsteur rechner | Jahresgehalt");
+        System.out.println("Lohnsteuer rechner | Jahresgehalt");
         System.out.println("------------------------------");
         System.out.println("Bitte geben Sie ihren Lohn ein");
         float lohn = Float.parseFloat(reader.nextLine());
         System.out.println("Bitte geben Sie ihre Steuerklasse ein");
         int sk = Integer.parseInt(reader.nextLine());
-        System.out.println("Sind Sie in Mitglied einer Kirche? (ja/nein)");
+        System.out.println("Sind Sie Mitglied einer Kirche? (ja/nein)");
         String kircheStr = reader.nextLine();
         boolean kirche = false;
         switch (kircheStr) {
