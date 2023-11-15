@@ -54,19 +54,37 @@ public class Lohnsteuer {
 
         User user = new User(lohn, sk, kirche);
         float abzuege = user.nettoBerechnen();
-        float versicherungsAbzuege = user.versicherungBerechnen();
-        System.out.println("- Ihre Lohnsteuer beträgt: " + String.format(Locale.GERMAN, "%.2f", abzuege) + " €");
+        float[] versicherungsAbzuegeArray = user.versicherungBerechnen();
+        float versicherungsAbzuege = 0;
+        for (float f : versicherungsAbzuegeArray) {
+            versicherungsAbzuege += f;
+        }
         if (kirche) {
             System.out.println("- Ihre Kirchensteuer beträgt: "
-                    + String.format(Locale.GERMAN, "%.2f", user.kirchenAbzuege) + " €");
+                    + String.format(Locale.GERMAN, "%.2f", user.kirchenAbzuege) + " \u20ac");
         }
+        System.out.println("Sozialversicherungsbeiträge:");
+        System.out.println(
+                "- Krankenversicherung: " + String.format(Locale.GERMAN, "%.2f", versicherungsAbzuegeArray[0])
+                        + " \u20ac");
         System.out
-                .println("- Ihre Sozialversicherungsbeiträge betragen: "
-                        + String.format(Locale.GERMAN, "%.2f", versicherungsAbzuege) + " €");
+                .println("- Rentenversicherung: " + String.format(Locale.GERMAN, "%.2f", versicherungsAbzuegeArray[1])
+                        + " \u20ac");
+        System.out
+                .println("- Pflegeversicherung: " + String.format(Locale.GERMAN, "%.2f", versicherungsAbzuegeArray[2])
+                        + " \u20ac");
+        System.out.println(
+                "- Arbeitslosenversicherung: " + String.format(Locale.GERMAN, "%.2f", versicherungsAbzuegeArray[3])
+                        + " \u20ac");
+        System.out.println("------------------------------");
+        System.out.println("- Ihre Lohnsteuer beträgt: " + String.format(Locale.GERMAN, "%.2f", abzuege) + " \u20ac");
+        System.out
+                .println("- Ihre Sozialversicherungsbeiträge betragen insgesamt: "
+                        + String.format(Locale.GERMAN, "%.2f", versicherungsAbzuege) + " \u20ac");
         System.out.println("------------------------------");
         System.out.println("Ihr Nettolohn beträgt: "
                 + String.format(Locale.GERMAN, "%.2f", lohn - abzuege - user.kirchenAbzuege - versicherungsAbzuege)
-                + " €");
+                + " \u20ac");
         reader.close();
     }
 
