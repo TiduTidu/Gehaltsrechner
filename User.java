@@ -33,8 +33,6 @@ public class User {
                     user.lohnSteuer = lohnsteuerTabelle[i][user.steuerKlasse];
                 }
             }
-
         }
     }
-
 }
