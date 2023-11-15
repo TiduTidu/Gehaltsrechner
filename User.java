@@ -30,10 +30,11 @@ public class User {
 
             if (this.bruttoLohn >= untereGrenze && this.bruttoLohn <= obereGrenze) {
                 if (this.steuerKlasse >= 1 && this.steuerKlasse <= 6) {
+                    this.lohnSteuer = lohnsteuerTabelle[i][this.steuerKlasse];
                     if (this.kirchenSteuer) {
                         this.kirchenAbzuege = (float) (this.lohnSteuer * 0.09);
                     }
-                    this.lohnSteuer = lohnsteuerTabelle[i][this.steuerKlasse];
+
                 }
             }
 
