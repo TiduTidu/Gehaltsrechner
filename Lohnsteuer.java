@@ -48,7 +48,8 @@ public class Lohnsteuer {
         }
 
         User user = new User(lohn, sk, kirche);
-
+        float abzuege = user.nettoBerechnen();
+        System.out.println(lohn - abzuege);
         reader.close();
     }
 
