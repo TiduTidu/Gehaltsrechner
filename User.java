@@ -1,38 +1,43 @@
 public class User {
 
-    int bruttoLohn;
+    float bruttoLohn;
     int steuerKlasse;
-    int alter;
     boolean kirchenSteuer;
-    String versicherung;
-    String bundesland;
-    int lohnSteuer;
+    float lohnSteuer;
+    float kirchenAbzuege;
 
-    //Konstruktor für neuen User/Steuerzahler
-    public User(int bruttoLohn, int steuerKlasse, int alter, boolean kirchenSteuer, String versicherung, String bundesland, int lohnSteuer)
-    {
-        this.bruttoLohn = bruttoLohn;
+    // Konstruktor für neuen User/Steuerzahler
+    public User(float lohn, int steuerKlasse, boolean kirchenSteuer) {
+        this.bruttoLohn = lohn;
         this.steuerKlasse = steuerKlasse;
-        this.alter = alter;
         this.kirchenSteuer = kirchenSteuer;
-        this.versicherung = versicherung;
-        this.bundesland = bundesland;
-        this.lohnSteuer = lohnSteuer;
-
     }
 
-    public static void setLohnSteuer(User user) {
+    public float versicherungBerechnen() {
+        float kv = (float) (this.bruttoLohn * 0.073);
+        float rv = (float) (this.bruttoLohn * 0.093);
+        float pv = (float) (this.bruttoLohn * 0.017);
+        float alv = (float) (this.bruttoLohn * 0.013);
+        return kv + rv + pv + alv;
+    }
+
+    public float nettoBerechnen() {
         int[][] lohnsteuerTabelle = LohnsteuerTabelle.getLohnsteuerTabelle();
 
-        for(int i = 0; i < lohnsteuerTabelle.length; i++) {
+        for (int i = 0; i < lohnsteuerTabelle.length; i++) {
             int untereGrenze = lohnsteuerTabelle[i][0];
             int obereGrenze = (i < lohnsteuerTabelle.length - 1) ? lohnsteuerTabelle[i + 1][0] : Integer.MAX_VALUE;
 
-            if(user.bruttoLohn >= untereGrenze && user.bruttoLohn <= obereGrenze) {
-                if(user.steuerKlasse >= 1 && user.steuerKlasse <= 6) {
-                    user.lohnSteuer = lohnsteuerTabelle[i][user.steuerKlasse];
+            if (this.bruttoLohn >= untereGrenze && this.bruttoLohn <= obereGrenze) {
+                if (this.steuerKlasse >= 1 && this.steuerKlasse <= 6) {
+                    if (this.kirchenSteuer) {
+                        this.kirchenAbzuege = (float) (this.lohnSteuer * 0.09);
+                    }
+                    this.lohnSteuer = lohnsteuerTabelle[i][this.steuerKlasse];
                 }
             }
+
         }
+        return this.lohnSteuer;
     }
 }
