@@ -4,6 +4,7 @@ public class User {
     int steuerKlasse;
     boolean kirchenSteuer;
     float lohnSteuer;
+    float kirchenAbzuege;
 
     // Konstruktor für neuen User/Steuerzahler
     public User(float lohn, int steuerKlasse, boolean kirchenSteuer) {
@@ -21,6 +22,9 @@ public class User {
 
             if (this.bruttoLohn >= untereGrenze && this.bruttoLohn <= obereGrenze) {
                 if (this.steuerKlasse >= 1 && this.steuerKlasse <= 6) {
+                    if (this.kirchenSteuer) {
+                        this.kirchenAbzuege = (float) (this.lohnSteuer * 0.09);
+                    }
                     this.lohnSteuer = lohnsteuerTabelle[i][this.steuerKlasse];
                 }
             }

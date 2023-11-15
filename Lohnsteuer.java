@@ -49,7 +49,13 @@ public class Lohnsteuer {
 
         User user = new User(lohn, sk, kirche);
         float abzuege = user.nettoBerechnen();
-        System.out.println(lohn - abzuege);
+
+        System.out.println("Ihre Lohnsteuer beträgt: " + String.valueOf(abzuege) + "€");
+        if (kirche) {
+            System.out.println("Ihre Kirchensteuer beträgt: " + String.valueOf(user.kirchenAbzuege) + "€");
+        }
+        System.out.println("------------------------------");
+        System.out.println("Ihr Nettolohn beträgt: " + String.valueOf(lohn - abzuege - user.kirchenAbzuege) + "€");
         reader.close();
     }
 
