@@ -5,12 +5,14 @@ public class User {
     boolean kirchenSteuer;
     float lohnSteuer;
     float kirchenAbzuege;
+    float steuerfreiBezüge;
 
     // Konstruktor für neuen User/Steuerzahler
-    public User(float lohn, int steuerKlasse, boolean kirchenSteuer) {
+    public User(float lohn, int steuerKlasse, boolean kirchenSteuer, float steuerfreiBezüge) {
         this.bruttoLohn = lohn;
         this.steuerKlasse = steuerKlasse;
         this.kirchenSteuer = kirchenSteuer;
+        this.steuerfreiBezüge = steuerfreiBezüge;
     }
 
     public float versicherungBerechnen() {

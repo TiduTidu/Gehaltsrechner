@@ -15,6 +15,9 @@ public class Lohnsteuer {
         String skString = reader.nextLine();
         Validator.validate("^[1-6]$", skString, "Fehler: Bitte geben Sie eine Zahl von 1 bis 6 ein.");
         int sk = Integer.parseInt(skString);
+        System.out.println("Bitte geben Sie ihren steuerfrei Bezüge ein");
+        String steuerfreiString = reader.nextLine();
+        float steuerfreiBezüge = Float.parseFloat(steuerfreiString);
         System.out.println("Sind Sie Mitglied einer Kirche? (ja/nein)");
         String kircheStr = reader.nextLine();
         boolean kirche = false;
@@ -52,7 +55,7 @@ public class Lohnsteuer {
 
         }
 
-        User user = new User(lohn, sk, kirche);
+        User user = new User(lohn, sk, kirche, steuerfreiBezüge);
         float abzuege = user.nettoBerechnen();
         float versicherungsAbzuege = user.versicherungBerechnen();
         System.out.println("- Ihre Lohnsteuer beträgt: " + String.format(Locale.GERMAN, "%.2f", abzuege) + " €");
@@ -65,7 +68,7 @@ public class Lohnsteuer {
                         + String.format(Locale.GERMAN, "%.2f", versicherungsAbzuege) + " €");
         System.out.println("------------------------------");
         System.out.println("Ihr Nettolohn beträgt: "
-                + String.format(Locale.GERMAN, "%.2f", lohn - abzuege - user.kirchenAbzuege - versicherungsAbzuege)
+                + String.format(Locale.GERMAN, "%.2f", lohn - abzuege - user.kirchenAbzuege - versicherungsAbzuege + steuerfreiBezüge)
                 + " €");
         reader.close();
     }
