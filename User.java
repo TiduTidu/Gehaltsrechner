@@ -13,6 +13,14 @@ public class User {
         this.kirchenSteuer = kirchenSteuer;
     }
 
+    public float versicherungBerechnen() {
+        float kv = (float) (this.bruttoLohn * 0.073);
+        float rv = (float) (this.bruttoLohn * 0.093);
+        float pv = (float) (this.bruttoLohn * 0.017);
+        float alv = (float) (this.bruttoLohn * 0.013);
+        return kv + rv + pv + alv;
+    }
+
     public float nettoBerechnen() {
         int[][] lohnsteuerTabelle = LohnsteuerTabelle.getLohnsteuerTabelle();
 
